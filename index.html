@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>H&S Bakery</title>
+</head>
+<body>
+
+<h2>Employee</h2>
+<form onsubmit="return (employee())" id="employeeForm" method="POST" >
+    <label for="fname">First name (varchar):</label><br>
+    <input type="text" id="fname" name="fname"><br>
+    <label for="mname">Middle name (varchar):</label><br>
+    <input type="text" id="mname" name="mname"><br>
+    <label for="lname">Last name (varchar):</label><br>
+    <input type="text" id="lname" name="lname"><br><br>
+    <label for="phonenum">Phone Number:</label><br>
+    <input type="text" id="phonenum" name="phonenum"><br>
+    <label for="hdate">Hire date:</label><br>
+    <input type="text" id="hdate" name="hdate"><br>
+    <label for="imstat">Immigration Status:</label><br>
+    <input type="text" id="imstat" name="imstat"><br>
+    <label for="ssn">SSN:</label><br>
+    <input type="text" id="ssn" name="ssn"><br>
+    <label for="salary">Salary:</label><br>
+    <input type="text" id="salary" name="salary"><br>
+    <label for="dpart">Department:</label><br>
+    <input type="text" id="depart" name="depart"><br>
+    <label for="position">Position:</label><br>
+    <input type="text" id="position" name="position"><br>
+    <label for="employeeid">ID:</label><br>
+    <input type="text" id="empId" name="empId"><br>
+
+
+    <input type="radio" id="searchAction" name="desiredAction" value="Search">
+    <label for="Search">Search</label>
+
+    <input type="radio" id="addAction" name="desiredAction" value="Add">
+    <label for="Add">Add</label>
+
+    <input type="radio" id="updateAction" name="desiredAction" value="Update">
+    <label for="Update">Update</label>
+
+    <input type="radio" id="deleteAction" name="desiredAction" value="Delete">
+    <label for="Delete">Delete</label>
+
+    <br><br>
+
+    <input type="submit"/>
+ 
+
+
+
+    
+</form> 
+
+<h2>Department</h2>
+<form onsubmit="return (department())" action="" id="departmentForm" method="POST">
+    <label for="dnum">Department Number:</label><br>
+    <input type="text" id="dnum" name="dnum"><br>
+    <label for="loc">Location:</label><br>
+    <input type="text" id="loc" name="loc"><br><br>
+    <label for="name">Name:</label><br>
+    <input type="text" id="depName" name="depName"><br><br>
+    <label for="sku">SKU:</label><br>
+    <input type="text" id="depSku" name="depSku"><br><br>
+
+    
+    <input type="radio" id="searchAction2" name="desiredAction2" value="Search2">
+    <label for="Search2">Search</label>
+
+    <input type="radio" id="addAction2" name="desiredAction2" value="Add2">
+    <label for="Add2">Add</label>
+
+    <input type="radio" id="updateAction2" name="desiredAction2" value="Update2">
+    <label for="Update2">Update</label>
+
+    <input type="radio" id="deleteAction2" name="desiredAction2" value="Delete2">
+    <label for="Delete2">Delete</label>
+
+    <br><br>
+
+    <input type="submit"/>
+</form> 
+
+<h2>Product</h2>
+<form onsubmit="return (product())" action="" id="productForm" method="POST">
+    <label for="skuNum">SKU number:</label><br>
+    <input type="text" id="skuNum" name="skuNum"><br>
+    <label for="prodName">Name:</label><br>
+    <input type="text" id="prodName" name="prodName"><br><br>
+
+    
+    <input type="radio" id="searchAction3" name="desiredAction3" value="Search3">
+    <label for="Search3">Search</label>
+
+    <input type="radio" id="addAction3" name="desiredAction3" value="Add3">
+    <label for="Add3">Add</label>
+
+    <input type="radio" id="updateAction3" name="desiredAction3" value="Update3">
+    <label for="Update3">Update</label>
+
+    <input type="radio" id="deleteAction3" name="desiredAction3" value="Delete3">
+    <label for="Delete3">Delete</label>
+
+    <br><br>
+
+    <input type="submit"/>
+</form> 
+
+<h2>Order</h2>
+
+<form onsubmit="return (order())" action="" id="orderForm" method="POST">
+    
+    <label for="psku">Product SKU:</label><br>
+    <input type="text" id="pSku" name="pSku"><br>
+    <label for="anumo">Account Number:</label><br>
+    <input type="text" id="accNum" name="accNum"><br><br>
+    <label for="ncase">Number of Cases:</label><br>
+    <input type="text" id="nCase" name="nCase"><br>
+    <label for="dor">Date Ordered:</label><br>
+    <input type="text" id="dateOrdered" name="dateOrdered"><br>
+    <label for="ddate">Delivary Date:</label><br>
+    <input type="text" id="dDate" name="dDate"><br>
+    <label for="cost">Cost:</label><br>
+    <input type="text" id="cost" name="cost"><br>
+
+
+    <input type="radio" id="searchAction4" name="desiredAction4" value="Search4">
+    <label for="Search4">Search</label>
+
+    <input type="radio" id="addAction4" name="desiredAction4" value="Add4">
+    <label for="Add4">Add</label>
+
+    <input type="radio" id="updateAction4" name="desiredAction4" value="Update4">
+    <label for="Update4">Update</label>
+
+    <input type="radio" id="deleteAction4" name="desiredAction4" value="Delete4">
+    <label for="Delete4">Delete</label>
+
+    <br><br>
+
+    <input type="submit"/>
+</form>
+
+<h2>Customer</h2>
+<form onsubmit="return (customer())" action="" id="customerForm" method="POST">
+    
+    <label for="anum">Account Number:</label><br>
+    <input type="text" id="aNum" name="aNum"><br>
+    <label for="cname">Customer Name:</label><br>
+    <input type="text" id="cName" name="cName"><br><br>
+
+    
+    <input type="radio" id="searchAction5" name="desiredAction5" value="Search5">
+    <label for="Search">Search</label>
+
+    <input type="radio" id="addAction5" name="desiredAction5" value="Add5">
+    <label for="Add">Add</label>
+
+    <input type="radio" id="updateAction5" name="desiredAction5" value="Update5">
+    <label for="Update">Update</label>
+
+    <input type="radio" id="deleteAction5" name="desiredAction5" value="Delete5">
+    <label for="Delete">Delete</label>
+
+    <br><br>
+
+    <input type="submit"/>
+</form>
+
+<script>
+
+    
+    function employee() {
+       
+        // EMPLOYEE FORM
+        if (document.getElementById("searchAction").checked == true ||
+            document.getElementById("addAction").checked == true ||
+            document.getElementById("updateAction").checked == true ||
+            document.getElementById("deleteAction").checked == true
+            ){
+
+            if (document.getElementById("searchAction").checked == true) {
+                
+                document.getElementById("employeeForm").action = "/employee/search"
+                // window.alert("employee search is selected")
+                // window.alert(formChoice1 + " is the current form choice")
+            }
+            if (document.getElementById("addAction").checked == true) {
+                
+                document.getElementById("employeeForm").action = "/employee/add"
+                // window.alert("employee add is selected")
+                // window.alert(formChoice1 + " is the current form choice")
+            }
+            if (document.getElementById("updateAction").checked == true) {
+                
+                document.getElementById("employeeForm").action = "/employee/update"
+                // window.alert("employee update is selected")
+                // window.alert(formChoice1 + " is the current form choice")
+            }
+            if (document.getElementById("deleteAction").checked == true) {
+                
+                document.getElementById("employeeForm").action = "/employee/delete"
+                // window.alert("employee delete is selected")
+                // window.alert(formChoice1 + " is the current form choice")
+            }
+        }
+        return true;
+    }
+    
+    function department() {
+        if (document.getElementById("searchAction2").checked == true ||
+            document.getElementById("addAction2").checked == true ||
+            document.getElementById("updateAction2").checked == true ||
+            document.getElementById("deleteAction2").checked == true
+            ){
+
+            if (document.getElementById("searchAction2").checked == true) {
+                
+                document.getElementById("departmentForm").action = "/department/search"
+                // window.alert("employee search is selected")
+                // window.alert(formChoice1 + " is the current form choice")
+            }
+            if (document.getElementById("addAction2").checked == true) {
+                
+                document.getElementById("departmentForm").action = "/department/add"
+                // window.alert("employee add is selected")
+                // window.alert(formChoice1 + " is the current form choice")
+            }
+            if (document.getElementById("updateAction2").checked == true) {
+                
+                document.getElementById("departmentForm").action = "/department/update"
+                // window.alert("employee update is selected")
+                // window.alert(formChoice1 + " is the current form choice")
+            }
+            if (document.getElementById("deleteAction2").checked == true) {
+                
+                document.getElementById("departmentForm").action = "/department/delete"
+                // window.alert("employee delete is selected")
+                // window.alert(formChoice1 + " is the current form choice")
+            }
+        }
+        return true;
+    }       
+
+    function product() {
+        if (document.getElementById("searchAction3").checked == true ||
+            document.getElementById("addAction=3").checked == true ||
+            document.getElementById("updateAction3").checked == true ||
+            document.getElementById("deleteAction3").checked == true
+            ){
+
+            if (document.getElementById("searchAction3").checked == true) {
+                
+                document.getElementById("productForm").action = "/product/search"
+                // window.alert("employee search is selected")
+                // window.alert(formChoice1 + " is the current form choice")
+            }
+            if (document.getElementById("addAction3").checked == true) {
+                
+                document.getElementById("productForm").action = "/product/add"
+                // window.alert("product add is selected")
+                // window.alert(formChoice1 + " is the current form choice")
+            }
+            if (document.getElementById("updateAction3").checked == true) {
+                
+                document.getElementById("productForm").action = "/product/update"
+                // window.alert("employee update is selected")
+                // window.alert(formChoice1 + " is the current form choice")
+            }
+            if (document.getElementById("deleteAction3").checked == true) {
+                
+                document.getElementById("productForm").action = "/product/delete"
+                // window.alert("employee delete is selected")
+                // window.alert(formChoice1 + " is the current form choice")
+            }
+        }
+        return true;
+    }     
+
+    function order() {
+        if (document.getElementById("searchAction4").checked == true ||
+            document.getElementById("addAction=4").checked == true ||
+            document.getElementById("updateAction4").checked == true ||
+            document.getElementById("deleteAction4").checked == true
+            ){
+
+            if (document.getElementById("searchAction4").checked == true) {
+                
+                document.getElementById("orderForm").action = "/search"
+                // window.alert("employee search is selected")
+                // window.alert(formChoice1 + " is the current form choice")
+            }
+            if (document.getElementById("addAction4").checked == true) {
+                
+                document.getElementById("orderForm").action = "/add"
+                // window.alert("employee add is selected")
+                // window.alert(formChoice1 + " is the current form choice")
+            }
+            if (document.getElementById("updateAction4").checked == true) {
+                
+                document.getElementById("orderForm").action = "/update"
+                // window.alert("employee update is selected")
+                // window.alert(formChoice1 + " is the current form choice")
+            }
+            if (document.getElementById("deleteAction4").checked == true) {
+                
+                document.getElementById("orderForm").action = "/delete"
+                // window.alert("employee delete is selected")
+                // window.alert(formChoice1 + " is the current form choice")
+            }
+        }
+        return true;
+    }       
+
+    function customer() {
+        if (document.getElementById("searchAction5").checked == true ||
+            document.getElementById("addAction=5").checked == true ||
+            document.getElementById("updateAction5").checked == true ||
+            document.getElementById("deleteAction5").checked == true
+            ){
+
+            if (document.getElementById("searchAction5").checked == true) {
+                
+                document.getElementById("customerForm").action = "/search"
+                // window.alert("employee search is selected")
+                // window.alert(formChoice1 + " is the current form choice")
+            }
+            if (document.getElementById("addAction5").checked == true) {
+                
+                document.getElementById("customerForm").action = "/add"
+                // window.alert("employee add is selected")
+                // window.alert(formChoice1 + " is the current form choice")
+            }
+            if (document.getElementById("updateAction5").checked == true) {
+                
+                document.getElementById("customerForm").action = "/update"
+                // window.alert("employee update is selected")
+                // window.alert(formChoice1 + " is the current form choice")
+            }
+            if (document.getElementById("deleteAction5").checked == true) {
+                
+                document.getElementById("customerForm").action = "/delete"
+                // window.alert("employee delete is selected")
+                // window.alert(formChoice1 + " is the current form choice")
+            }
+        }
+        return true;
+    }       
+
+    
+
+
+</script>
+</body>
+</html>
+
