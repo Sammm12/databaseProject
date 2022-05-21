@@ -47,10 +47,6 @@
 
     <input type="submit"/>
  
-
-
-
-    
 </form> 
 
 <h2>Department</h2>
@@ -105,10 +101,10 @@
     <br><br>
 
     <input type="submit"/>
+
 </form> 
 
 <h2>Order</h2>
-
 <form onsubmit="return (order())" action="" id="orderForm" method="POST">
     
     <label for="psku">Product SKU:</label><br>
@@ -119,10 +115,12 @@
     <input type="text" id="nCase" name="nCase"><br>
     <label for="dor">Date Ordered:</label><br>
     <input type="text" id="dateOrdered" name="dateOrdered"><br>
-    <label for="ddate">Delivary Date:</label><br>
+    <label for="ddate">Delivery Date:</label><br>
     <input type="text" id="dDate" name="dDate"><br>
     <label for="cost">Cost:</label><br>
     <input type="text" id="cost" name="cost"><br>
+    <label for="orderNo">Order Number:</label><br>
+    <input type="text" id="orderNo" name="orderNo"><br>
 
 
     <input type="radio" id="searchAction4" name="desiredAction4" value="Search4">
@@ -140,6 +138,7 @@
     <br><br>
 
     <input type="submit"/>
+
 </form>
 
 <h2>Customer</h2>
@@ -148,7 +147,9 @@
     <label for="anum">Account Number:</label><br>
     <input type="text" id="aNum" name="aNum"><br>
     <label for="cname">Customer Name:</label><br>
-    <input type="text" id="cName" name="cName"><br><br>
+    <input type="text" id="cName" name="cName"><br>
+    <label for="cAdd">Customer Address:</label><br>
+    <input type="text" id="cAdd" name="cAdd"><br><br>
 
     
     <input type="radio" id="searchAction5" name="desiredAction5" value="Search5">
@@ -245,7 +246,7 @@
 
     function product() {
         if (document.getElementById("searchAction3").checked == true ||
-            document.getElementById("addAction=3").checked == true ||
+            document.getElementById("addAction3").checked == true ||
             document.getElementById("updateAction3").checked == true ||
             document.getElementById("deleteAction3").checked == true
             ){
@@ -280,32 +281,32 @@
 
     function order() {
         if (document.getElementById("searchAction4").checked == true ||
-            document.getElementById("addAction=4").checked == true ||
+            document.getElementById("addAction4").checked == true ||
             document.getElementById("updateAction4").checked == true ||
             document.getElementById("deleteAction4").checked == true
             ){
 
             if (document.getElementById("searchAction4").checked == true) {
                 
-                document.getElementById("orderForm").action = "/search"
+                document.getElementById("orderForm").action = "/order/search"
                 // window.alert("employee search is selected")
                 // window.alert(formChoice1 + " is the current form choice")
             }
             if (document.getElementById("addAction4").checked == true) {
                 
-                document.getElementById("orderForm").action = "/add"
+                document.getElementById("orderForm").action = "/order/add"
                 // window.alert("employee add is selected")
                 // window.alert(formChoice1 + " is the current form choice")
             }
             if (document.getElementById("updateAction4").checked == true) {
                 
-                document.getElementById("orderForm").action = "/update"
+                document.getElementById("orderForm").action = "/order/update"
                 // window.alert("employee update is selected")
                 // window.alert(formChoice1 + " is the current form choice")
             }
             if (document.getElementById("deleteAction4").checked == true) {
                 
-                document.getElementById("orderForm").action = "/delete"
+                document.getElementById("orderForm").action = "/order/delete"
                 // window.alert("employee delete is selected")
                 // window.alert(formChoice1 + " is the current form choice")
             }
@@ -315,32 +316,32 @@
 
     function customer() {
         if (document.getElementById("searchAction5").checked == true ||
-            document.getElementById("addAction=5").checked == true ||
+            document.getElementById("addAction5").checked == true ||
             document.getElementById("updateAction5").checked == true ||
             document.getElementById("deleteAction5").checked == true
             ){
 
             if (document.getElementById("searchAction5").checked == true) {
                 
-                document.getElementById("customerForm").action = "/search"
+                document.getElementById("customerForm").action = "/customer/search"
                 // window.alert("employee search is selected")
                 // window.alert(formChoice1 + " is the current form choice")
             }
             if (document.getElementById("addAction5").checked == true) {
                 
-                document.getElementById("customerForm").action = "/add"
+                document.getElementById("customerForm").action = "/customer/add"
                 // window.alert("employee add is selected")
                 // window.alert(formChoice1 + " is the current form choice")
             }
             if (document.getElementById("updateAction5").checked == true) {
                 
-                document.getElementById("customerForm").action = "/update"
+                document.getElementById("customerForm").action = "/customer/update"
                 // window.alert("employee update is selected")
                 // window.alert(formChoice1 + " is the current form choice")
             }
             if (document.getElementById("deleteAction5").checked == true) {
                 
-                document.getElementById("customerForm").action = "/delete"
+                document.getElementById("customerForm").action = "/customer/delete"
                 // window.alert("employee delete is selected")
                 // window.alert(formChoice1 + " is the current form choice")
             }
@@ -349,8 +350,6 @@
     }       
 
     
-
-
 </script>
 </body>
 </html>
