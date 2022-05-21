@@ -43,62 +43,6 @@ app.post("/employee/add", function (req, res) {
     let department = req.body.depart
     let position = req.body.position
     let empId = req.body.empId
-    // // DEPARTMENT
-    // let depNo = req.body.dnum
-    // let depLoc = req.body.loc
-    // let depName = req.body.depName
-    // let depSku = req.body.depSku
-    // // PRODUCT
-    // let prodSku = req.body.skuNum
-    // let prodName = req.body.prodName
-    // // ORDER
-    // let orderSku = req.body.pSku
-    // let accNum = req.body.accNum
-    // let numCases = req.body.nCase
-    // let dateOrdered = req.body.dateOrdered
-    // let deliveryDate = req.body.deliveryDate
-    // let cost = req.body.cost
-    // //CUSTOMER
-    // let customerAccNum = req.body.aNum 
-    // let customerName = req.body.cName
-
-    let json = {
-        "employee": {
-            "fName": fName,
-            "lName": lName,
-            "mName:": mName,
-            "phone": phone,
-            "hdate": hdate,
-            "imstat": imstat,
-            "ssn": ssn,
-            "salary": salary,
-            "department": department,
-            "position": position,
-            "empId": empId
-        }
-        // "department": {
-        //     "depNo": depNo,
-        //     "depLoc": depLoc,
-        //     "depName": depName,
-        //     "depSku": depSku,
-        // },
-        // "product": {
-        //     "productSku": prodSku,
-        //     "prodName": prodName
-        // },
-        // "order": {
-        //     "orderSku": orderSku,
-        //     "accNum": accNum,
-        //     "numCases": numCases,
-        //     "dateOrdered": dateOrdered,
-        //     "deliveryDate": deliveryDate,
-        //     "cost": cost
-        // },
-        // "customer": {
-        //     "customerAccNum": customerAccNum,
-        //     "customerName": customerName
-        // }
-    }
 
     var sql = "INSERT INTO Employee(" + 
     "Emp_id" + "," +
@@ -233,99 +177,10 @@ app.post("/employee/search", function(req, res) {
     console.log(query)
     
 })
-// app.post("/employee/update", function(req, res) {
+app.post("/employee/update", function(req, res) {
 
-//     var query = "UPDATE "
-//     var query2 = " EMPLOYEE "
-
-//     let fName = req.body.fname
-//     let lName = req.body.lname
-//     let mName = req.body.mname
-//     let phone = req.body.phonenum
-//     let hdate = req.body.hdate
-
-//     let imstat = req.body.imstat
-//     let ssn = req.body.ssn
-//     let salary = req.body.salary
-//     let department = req.body.depart
-//     let position = req.body.position
-//     let empId = req.body.empId
-
-//     if (fName != "") {
-//         // console.log("found fname!!!")
-//         query = query + ( "," + "Fname")
-//         query2 = query2 + ("AND" + "Fname = " + "'" + fName + "'")
-//     }
-//     if (lName != "") {
-//         query = query + ("," +"Lname")
-//         query2 = query2 +("AND" + "Lname = " + "'" + lName + "'")
-
-//     }
-//     if (mName != "") {
-//         query = query + ("," +"Mname")
-//         query2 = query2 +("AND" + "Mname = " + "'" + mName + "'")
-
-//     }
-//     if (phone != "") {
-//         query = query + ("," +"Phone")
-//         query2 = query2 +("AND" + "Phone = " + "'" + phone + "'")
-
-//     }
-//     if (hdate != "") {
-//         query = query + ("," +"Hire_Date")
-//         query2 = query2 + ("AND" + "Hire_Date = " + "'" + hdate + "'")
-
-//     }
-//     if (imstat != "") {
-//         query = query + ("," +"Immigration_Status")
-//         query2 = query2 + ("AND" + "Immigration_Status = " + "'"+ imstat + "'")
-
-//     }
-//     if (ssn != "") {
-//         query = query + ("," +"SSN")
-//         query2 = query2 +("AND" + "SSN = " + "'" + ssn + "'")
-
-//     }
-//     if (salary != "") {
-//         query = query + ("," +"Salary")
-//         query2 = query2 +("AND" + "Salary = " + "'" + salary + "'")
-
-//     }
-//     if (department != "") {
-//         query = query + ("," +"Department")
-//         query2 = query2 +("AND" + "Department = " + "'" + department + "'")
-
-//     }
-//     if (position != "") {
-//         query = query + ("," +"Position")
-//         query2 = query2 +("AND" + "Position = " + "'" + position + "'")
-
-//     }
-//     if (empId != "") {
-//         query = query + ("," +"Emp_id")
-//         query2 = query2 +("AND" + "Emp_Id = " + "'" + empId + "'")
-//     }
-
-//     query = query.replace(',', '');
-//     query2 = query2.replace(/AND/i, '');
-
-//     query = query + query2
-    
-//     con.query(query, function (err, result) {
-//         if (err) {
-//             throw err;
-//         }
-//         console.log("search successful")
-//         // res.send(query + result)
-//         res.send(JSON.stringify(result));
-//     })
-
-//     console.log(query)
-
-// })
-app.post("/employee/delete", function(req, res) {
-    // var query = "DELETE "
-    var query2 = "Delete FROM Employee WHERE "
+    var query = "UPDATE "
+    var query2 = " EMPLOYEE "
 
     let fName = req.body.fname
     let lName = req.body.lname
@@ -342,75 +197,149 @@ app.post("/employee/delete", function(req, res) {
 
     if (fName != "") {
         // console.log("found fname!!!")
-        // query = query + ( "," + "Fname")
+        query = query + ( "," + "Fname")
         query2 = query2 + ("AND" + "Fname = " + "'" + fName + "'")
     }
     if (lName != "") {
-        // query = query + ("," +"Lname")
+        query = query + ("," +"Lname")
         query2 = query2 +("AND" + "Lname = " + "'" + lName + "'")
 
     }
     if (mName != "") {
-        // query = query + ("," +"Mname")
+        query = query + ("," +"Mname")
         query2 = query2 +("AND" + "Mname = " + "'" + mName + "'")
 
     }
     if (phone != "") {
-        // query = query + ("," +"Phone")
+        query = query + ("," +"Phone")
         query2 = query2 +("AND" + "Phone = " + "'" + phone + "'")
 
     }
     if (hdate != "") {
-        // query = query + ("," +"Hire_Date")
+        query = query + ("," +"Hire_Date")
         query2 = query2 + ("AND" + "Hire_Date = " + "'" + hdate + "'")
 
     }
     if (imstat != "") {
-        // query = query + ("," +"Immigration_Status")
+        query = query + ("," +"Immigration_Status")
         query2 = query2 + ("AND" + "Immigration_Status = " + "'"+ imstat + "'")
 
     }
     if (ssn != "") {
-        // query = query + ("," +"SSN")
+        query = query + ("," +"SSN")
         query2 = query2 +("AND" + "SSN = " + "'" + ssn + "'")
 
     }
     if (salary != "") {
-        // query = query + ("," +"Salary")
+        query = query + ("," +"Salary")
         query2 = query2 +("AND" + "Salary = " + "'" + salary + "'")
 
     }
     if (department != "") {
-        // query = query + ("," +"Department")
+        query = query + ("," +"Department")
         query2 = query2 +("AND" + "Department = " + "'" + department + "'")
 
     }
     if (position != "") {
-        // query = query + ("," +"Position")
+        query = query + ("," +"Position")
         query2 = query2 +("AND" + "Position = " + "'" + position + "'")
 
     }
     if (empId != "") {
-        // query = query + ("," +"Emp_id")
+        query = query + ("," +"Emp_id")
         query2 = query2 +("AND" + "Emp_Id = " + "'" + empId + "'")
     }
 
-    // query = query.replace(',', '');
+    query = query.replace(',', '');
     query2 = query2.replace(/AND/i, '');
 
-    // query = query + query2
+    query = query + query2
+    
+    con.query(query, function (err, result) {
+        if (err) {
+            throw err;
+        }
+        console.log("search successful")
+        // res.send(query + result)
+        res.send(JSON.stringify(result));
+    })
+
+    console.log(query)
+
+})
+app.post("/employee/delete", function(req, res) {
+    var query2 = "Delete FROM Employee WHERE "
+
+    let fName = req.body.fname
+    let lName = req.body.lname
+    let mName = req.body.mname
+    let phone = req.body.phonenum
+    let hdate = req.body.hdate
+
+    let imstat = req.body.imstat
+    let ssn = req.body.ssn
+    let salary = req.body.salary
+    let department = req.body.depart
+    let position = req.body.position
+    let empId = req.body.empId
+
+    if (fName != "") {
+        
+        query2 = query2 + ("AND" + "Fname = " + "'" + fName + "'")
+    }
+    if (lName != "") {
+        query2 = query2 +("AND" + "Lname = " + "'" + lName + "'")
+
+    }
+    if (mName != "") {
+        query2 = query2 +("AND" + "Mname = " + "'" + mName + "'")
+
+    }
+    if (phone != "") {
+        query2 = query2 +("AND" + "Phone = " + "'" + phone + "'")
+
+    }
+    if (hdate != "") {
+        query2 = query2 + ("AND" + "Hire_Date = " + "'" + hdate + "'")
+
+    }
+    if (imstat != "") {
+        query2 = query2 + ("AND" + "Immigration_Status = " + "'"+ imstat + "'")
+
+    }
+    if (ssn != "") {
+        query2 = query2 +("AND" + "SSN = " + "'" + ssn + "'")
+
+    }
+    if (salary != "") {
+        query2 = query2 +("AND" + "Salary = " + "'" + salary + "'")
+
+    }
+    if (department != "") {
+        query2 = query2 +("AND" + "Department = " + "'" + department + "'")
+
+    }
+    if (position != "") {
+        query2 = query2 +("AND" + "Position = " + "'" + position + "'")
+
+    }
+    if (empId != "") {
+        query2 = query2 +("AND" + "Emp_Id = " + "'" + empId + "'")
+    }
+
+    query2 = query2.replace(/AND/i, '');
     
     con.query(query2, function (err, result) {
         if (err) {
             throw err;
         }
         console.log("delete successful")
-        // res.send(query + result)
         res.send(JSON.stringify(result));
     })
 
     console.log(query2)
 })
+
 
 app.post("/department/add", function(req, res) {
     let depNo = req.body.dnum
@@ -455,7 +384,6 @@ app.post("/department/search", function(req, res) {
     }
 
     if (depNo != "") {
-        // console.log("found fname!!!")
         query = query + ( "," + "Number")
         query2 = query2 + ("AND" + "Number = " + "'" + depNo + "'")
     }
@@ -494,11 +422,10 @@ app.post("/department/search", function(req, res) {
 
     console.log(query)
 })
-// app.post("/department/update", function(req, res) {
+app.post("/department/update", function(req, res) {
 
-// })
+})
 app.post("/department/delete", function(req, res) {
-// var query = "DELETE "
 var query2 = "Delete FROM Department WHERE "
 
 let depNo = req.body.dnum
@@ -507,30 +434,23 @@ let depName = req.body.depName
 let depSku = req.body.depSku
 
 if (depNo != "") {
-    // console.log("found fname!!!")
-    // query = query + ( "," + "Fname")
+    
     query2 = query2 + ("AND" + "Number = " + "'" + depNo + "'")
 }
 if (depLoc != "") {
-    // query = query + ("," +"Lname")
     query2 = query2 +("AND" + "Location = " + "'" + depLoc + "'")
 
 }
 if (depName != "") {
-    // query = query + ("," +"Mname")
     query2 = query2 +("AND" + "Name = " + "'" + depName + "'")
 
 }
 if (depSku != "") {
-    // query = query + ("," +"Phone")
     query2 = query2 +("AND" + "depSku = " + "'" + depSku + "'")
 
 }
 
-// query = query.replace(',', '');
 query2 = query2.replace(/AND/i, '');
-
-// query = query + query2
 
 con.query(query2, function (err, result) {
     if (err) {
@@ -543,6 +463,7 @@ con.query(query2, function (err, result) {
 
 console.log(query2)
 })
+
 
 app.post("/product/add", function(req, res) {
    
@@ -581,7 +502,6 @@ app.post("/product/search", function(req, res) {
     }
 
     if (prodSku != "") {
-        // console.log("found fname!!!")
         query = query + ( "," + "Sku_num")
         query2 = query2 + ("AND" + "Sku_num = " + "'" + prodSku + "'")
     }
@@ -614,27 +534,22 @@ app.post("/product/update", function(req, res) {
 
 })
 app.post("/product/delete", function(req, res) {
-// var query = "DELETE "
 var query2 = "Delete FROM Product WHERE "
 
 let prodSku = req.body.skuNum
 let prodName = req.body.prodName
 
 if (prodSku != "") {
-    // console.log("found fname!!!")
-    // query = query + ( "," + "Fname")
+    
     query2 = query2 + ("AND" + "Sku_num = " + "'" + prodSku + "'")
 }
 if (prodName != "") {
-    // query = query + ("," +"Lname")
     query2 = query2 +("AND" + "product_name = " + "'" + prodName + "'")
 
 }
 
-// query = query.replace(',', '');
 query2 = query2.replace(/AND/i, '');
 
-// query = query + query2
 
 con.query(query2, function (err, result) {
     if (err) {
@@ -647,6 +562,7 @@ con.query(query2, function (err, result) {
 
 console.log(query2)
 })
+
 
 app.post("/order/add", function(req, res) {
 
@@ -757,11 +673,10 @@ app.post("/order/search", function(req, res) {
 
     console.log(query)
 })
-// app.post("/order/update", function(req, res) {
+app.post("/order/update", function(req, res) {
 
-// })
+})
 app.post("/order/delete", function(req, res) {
-// var query = "DELETE "
 var query2 = "Delete FROM Orders WHERE "
 
 let orderSku = req.body.pSku
@@ -773,45 +688,36 @@ let cost = req.body.cost
 let orderNum = req.body.orderNo
 
 if (orderSku != "") {
-    // console.log("found fname!!!")
-    // query = query + ( "," + "Fname")
+    
     query2 = query2 + ("AND" + "p_sku = " + "'" + orderSku + "'")
 }
 if (accNum != "") {
-    // query = query + ("," +"Lname")
     query2 = query2 +("AND" + "Account_Number = " + "'" + accNum + "'")
 
 }
 if (numCases != "") {
-    // query = query + ("," +"Mname")
     query2 = query2 +("AND" + "num_ofCases = " + "'" + numCases + "'")
 
 }
 if (dateOrdered != "") {
-    // query = query + ("," +"Phone")
     query2 = query2 +("AND" + "Date_Ordered = " + "'" + dateOrdered + "'")
 
 }
 if (deliveryDate != "") {
-    // query = query + ("," +"Hire_Date")
     query2 = query2 + ("AND" + "Delivery_Date = " + "'" + deliveryDate + "'")
 
 }
 if (cost != "") {
-    // query = query + ("," +"Immigration_Status")
     query2 = query2 + ("AND" + "Cost = " + "'"+ cost + "'")
 
 }
 if (orderNum != "") {
-    // query = query + ("," +"SSN")
     query2 = query2 +("AND" + "Order_num = " + "'" + orderNum + "'")
 
 }
 
-// query = query.replace(',', '');
 query2 = query2.replace(/AND/i, '');
 
-// query = query + query2
 
 con.query(query2, function (err, result) {
     if (err) {
@@ -899,11 +805,10 @@ app.post("/customer/search", function(req, res) {
     
         console.log(query)
 })
-// app.post("/customer/update", function(req, res) {
+app.post("/customer/update", function(req, res) {
 
-// })
+})
 app.post("/customer/delete", function(req, res) {
-// var query = "DELETE "
 var query2 = "Delete FROM Customer WHERE "
 
 let customerAccNum = req.body.aNum 
@@ -911,25 +816,19 @@ let customerName = req.body.cName
 let customerAdd = req.body.cAdd 
 
 if (customerAccNum != "") {
-    // console.log("found fname!!!")
-    // query = query + ( "," + "Fname")
+   
     query2 = query2 + ("AND" + "Account_no = " + "'" + customerAccNum + "'")
 }
 if (customerName != "") {
-    // query = query + ("," +"Lname")
     query2 = query2 +("AND" + "Customer_name = " + "'" + customerName + "'")
 
 }
 if (customerAdd != "") {
-    // query = query + ("," +"Mname")
     query2 = query2 +("AND" + "Customer_address = " + "'" + customerAdd + "'")
 
 }
 
-// query = query.replace(',', '');
 query2 = query2.replace(/AND/i, '');
-
-// query = query + query2
 
 con.query(query2, function (err, result) {
     if (err) {
@@ -947,8 +846,5 @@ console.log(query2)
 app.get("/", urlencodedParser, function(req, res) {
     res.sendFile(__dirname + "/index.html")
 })
-
-
-
 
 app.listen(3000)
