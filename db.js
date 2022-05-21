@@ -6,6 +6,7 @@ var url = require("url")
 var bodyparser = require("body-parser");
 const res = require('express/lib/response');
 const { first } = require('cheerio/lib/api/traversing');
+const { attr } = require('cheerio/lib/api/attributes');
 
 app.use(bodyparser.urlencoded({extended: true}))
 app.use(bodyparser.json())
@@ -98,7 +99,7 @@ app.post("/employee/search", function(req, res) {
     let empId = req.body.empId
 
     if (fName == "" && lName == "" && mName == "" && phone == "" && hdate == "" && imstat == "" && ssn == "" && salary == "" && department == "" && position == "" && empId == "") {
-        query = query + ("*")
+        query = query + (" * ")
         query2 = query2.slice(1,17)
     }
 
@@ -179,8 +180,9 @@ app.post("/employee/search", function(req, res) {
 })
 app.post("/employee/update", function(req, res) {
 
-    var query = "UPDATE "
-    var query2 = " EMPLOYEE "
+    var query = "UPDATE Employee SET "
+    var query2 = ""
+    var query3 = ""
 
     let fName = req.body.fname
     let lName = req.body.lname
@@ -195,63 +197,59 @@ app.post("/employee/update", function(req, res) {
     let position = req.body.position
     let empId = req.body.empId
 
+    let attribute = req.body.updateA1
+    let update = req.body.updateN1
+
     if (fName != "") {
         // console.log("found fname!!!")
-        query = query + ( "," + "Fname")
-        query2 = query2 + ("AND" + "Fname = " + "'" + fName + "'")
+        query3 = query3 + ("AND" + "Fname = " + "'" + fName + "'")
     }
     if (lName != "") {
-        query = query + ("," +"Lname")
-        query2 = query2 +("AND" + "Lname = " + "'" + lName + "'")
+        query3 = query3 +("AND" + "Lname = " + "'" + lName + "'")
 
     }
     if (mName != "") {
-        query = query + ("," +"Mname")
-        query2 = query2 +("AND" + "Mname = " + "'" + mName + "'")
+        query3 = query3 +("AND" + "Mname = " + "'" + mName + "'")
 
     }
     if (phone != "") {
-        query = query + ("," +"Phone")
-        query2 = query2 +("AND" + "Phone = " + "'" + phone + "'")
+        query3 = query3 +("AND" + "Phone = " + "'" + phone + "'")
 
     }
     if (hdate != "") {
-        query = query + ("," +"Hire_Date")
-        query2 = query2 + ("AND" + "Hire_Date = " + "'" + hdate + "'")
+        query3 = query3 + ("AND" + "Hire_Date = " + "'" + hdate + "'")
 
     }
     if (imstat != "") {
-        query = query + ("," +"Immigration_Status")
-        query2 = query2 + ("AND" + "Immigration_Status = " + "'"+ imstat + "'")
+        query3 = query3 + ("AND" + "Immigration_Status = " + "'"+ imstat + "'")
 
     }
     if (ssn != "") {
-        query = query + ("," +"SSN")
-        query2 = query2 +("AND" + "SSN = " + "'" + ssn + "'")
+        query3 = query3 +("AND" + "SSN = " + "'" + ssn + "'")
 
     }
     if (salary != "") {
-        query = query + ("," +"Salary")
-        query2 = query2 +("AND" + "Salary = " + "'" + salary + "'")
+        query3 = query3 +("AND" + "Salary = " + "'" + salary + "'")
 
     }
     if (department != "") {
-        query = query + ("," +"Department")
-        query2 = query2 +("AND" + "Department = " + "'" + department + "'")
+        query3 = query3 +("AND" + "Department = " + "'" + department + "'")
 
     }
     if (position != "") {
-        query = query + ("," +"Position")
-        query2 = query2 +("AND" + "Position = " + "'" + position + "'")
+        query3 = query3 +("AND" + "Position = " + "'" + position + "'")
 
     }
     if (empId != "") {
-        query = query + ("," +"Emp_id")
-        query2 = query2 +("AND" + "Emp_Id = " + "'" + empId + "'")
+        query3 = query3 +("AND" + "Emp_Id = " + "'" + empId + "'")
     }
 
-    query = query.replace(',', '');
-    query2 = query2.replace(/AND/i, '');
+    
+    query3 = query3.replace(/AND/i, '');
+
+    if(update != "" && attribute != "") {
+        query2 = query2 + (attribute + " = " + "'" + update + "'" + " WHERE "  + query3 )
+    }
 
     query = query + query2
     
@@ -379,7 +377,7 @@ app.post("/department/search", function(req, res) {
     let depSku = req.body.depSku
 
     if (depNo == "" && depLoc == "" && depName == "" && depSku == "") {
-        query = query + ("*")
+        query = query + (" * ")
         query2 = query2.slice(1,17)
     }
 
@@ -423,7 +421,54 @@ app.post("/department/search", function(req, res) {
     console.log(query)
 })
 app.post("/department/update", function(req, res) {
+    var query = "UPDATE Department SET "
+    var query2 = ""
+    var query3 = ""
 
+    let depNo = req.body.dnum
+    let depLoc = req.body.loc
+    let depName = req.body.depName
+    let depSku = req.body.depSku
+
+    let attribute = req.body.updateA2
+    let update = req.body.updateN2
+
+    if (depNo != "") {
+        // console.log("found fname!!!")
+        query3 = query3 + ("AND" + "Number = " + "'" + depNo + "'")
+    }
+    if (depLoc != "") {
+        query3 = query3 +("AND" + "Location = " + "'" + depLoc+ "'")
+
+    }
+    if (depName != "") {
+        query3 = query3 +("AND" + "Name= " + "'" + depName + "'")
+
+    }
+    if (depSku != "") {
+        query3 = query3 +("AND" + "depSku = " + "'" + depSku + "'")
+
+    }
+
+    
+    query3 = query3.replace(/AND/i, '');
+
+    if(update != "" && attribute != "") {
+        query2 = query2 + (attribute + " = " + "'" + update + "'" + " WHERE "  + query3 )
+    }
+
+    query = query + query2
+    
+    con.query(query, function (err, result) {
+        if (err) {
+            throw err;
+        }
+        console.log("search successful")
+        // res.send(query + result)
+        res.send(JSON.stringify(result));
+    })
+
+    console.log(query)
 })
 app.post("/department/delete", function(req, res) {
 var query2 = "Delete FROM Department WHERE "
@@ -497,7 +542,7 @@ app.post("/product/search", function(req, res) {
     let prodName = req.body.prodName
 
     if (prodSku == "" && prodName == "") {
-        query = query + ("*")
+        query = query + (" * ")
         query2 = query2.slice(1,17)
     }
 
@@ -531,7 +576,41 @@ app.post("/product/search", function(req, res) {
     console.log(query)
 })
 app.post("/product/update", function(req, res) {
+    var query = "UPDATE Product SET "
+    var query2 = ""
+    var query3 = ""
 
+    let prodSku = req.body.skuNum
+    let prodName = req.body.prodName
+
+    let attribute = req.body.updateA3
+    let update = req.body.updateN3
+
+    if (prodSku != "") {
+        query3 = query3 + ("AND" + "Sku_num = " + "'" + prodSku + "'")
+    }
+    if (prodName != "") {
+        query3 = query3 +("AND" + "product_name = " + "'" + prodName + "'")
+    }
+    
+    query3 = query3.replace(/AND/i, '');
+
+    if(update != "" && attribute != "") {
+        query2 = query2 + (attribute + " = " + "'" + update + "'" + " WHERE "  + query3 )
+    }
+
+    query = query + query2
+    
+    con.query(query, function (err, result) {
+        if (err) {
+            throw err;
+        }
+        console.log("search successful")
+        // res.send(query + result)
+        res.send(JSON.stringify(result));
+    })
+
+    console.log(query)
 })
 app.post("/product/delete", function(req, res) {
 var query2 = "Delete FROM Product WHERE "
@@ -614,7 +693,7 @@ app.post("/order/search", function(req, res) {
     let orderNum = req.body.orderNo
 
     if (orderSku == "" && accNum == "" && numCases == "" && dateOrdered == "" && deliveryDate == "" && cost == "" && orderNum == "") {
-        query = query + ("*")
+        query = query + (" * ")
         query2 = query2.slice(1,17)
     }
 
@@ -674,7 +753,68 @@ app.post("/order/search", function(req, res) {
     console.log(query)
 })
 app.post("/order/update", function(req, res) {
+    var query = "UPDATE Orders SET "
+    var query2 = ""
+    var query3 = ""
 
+    let orderSku = req.body.pSku
+    let accNum = req.body.accNum
+    let numCases = req.body.nCase
+    let dateOrdered = req.body.dateOrdered
+    let deliveryDate = req.body.dDate
+    let cost = req.body.cost
+    let orderNum = req.body.orderNo
+
+    let attribute = req.body.updateA4
+    let update = req.body.updateN4
+
+    if (orderSku != "") {
+        // console.log("found fname!!!")
+        query3 = query3 + ("AND" + "p_sku = " + "'" + orderSku + "'")
+    }
+    if (accNum != "") {
+        query3 = query3 +("AND" + "Account_Number = " + "'" + accNum + "'")
+
+    }
+    if (numCases != "") {
+        query3 = query3 +("AND" + "num_ofCases = " + "'" + numCases + "'")
+
+    }
+    if (dateOrdered != "") {
+        query3 = query3 +("AND" + "Date_Ordered = " + "'" + dateOrdered + "'")
+
+    }
+    if (deliveryDate != "") {
+        query3 = query3 + ("AND" + "Delivery_Date = " + "'" + deliveryDate + "'")
+
+    }
+    if (cost != "") {
+        query3 = query3 + ("AND" + "Cost = " + "'"+ cost + "'")
+
+    }
+    if (orderNum != "") {
+        query3 = query3 +("AND" + "Order_num = " + "'" + orderNum + "'")
+
+    }
+    
+    query3 = query3.replace(/AND/i, '');
+
+    if(update != "" && attribute != "") {
+        query2 = query2 + (attribute + " = " + "'" + update + "'" + " WHERE "  + query3 )
+    }
+
+    query = query + query2
+    
+    con.query(query, function (err, result) {
+        if (err) {
+            throw err;
+        }
+        console.log("search successful")
+        // res.send(query + result)
+        res.send(JSON.stringify(result));
+    })
+
+    console.log(query)
 })
 app.post("/order/delete", function(req, res) {
 var query2 = "Delete FROM Orders WHERE "
@@ -767,7 +907,7 @@ app.post("/customer/search", function(req, res) {
         let customerAdd = req.body.cAdd 
     
         if (customerAccNum  == "" && customerName == "" && customerAdd == "") {
-            query = query + ("*")
+            query = query + (" * ")
             query2 = query2.slice(1,17)
         }
     
@@ -806,7 +946,47 @@ app.post("/customer/search", function(req, res) {
         console.log(query)
 })
 app.post("/customer/update", function(req, res) {
+    var query = "UPDATE Customer SET "
+    var query2 = ""
+    var query3 = ""
 
+    let customerAccNum = req.body.aNum 
+    let customerName = req.body.cName
+    let customerAdd = req.body.cAdd 
+
+    let attribute = req.body.updateA5
+    let update = req.body.updateN5
+
+    if (customerAccNum != "") {
+        query3 = query3 + ("AND" + "Account_no = " + "'" + customerAccNum + "'")
+    }
+    if (customerName != "") {
+        query3 = query3 +("AND" + "Customer_name = " + "'" + customerName + "'")
+
+    }
+    if (customerAdd != "") {
+        query3 = query3 +("AND" + "Customer_address = " + "'" + customerAdd + "'")
+
+    }
+    
+    query3 = query3.replace(/AND/i, '');
+
+    if(update != "" && attribute != "") {
+        query2 = query2 + (attribute + " = " + "'" + update + "'" + " WHERE "  + query3 )
+    }
+
+    query = query + query2
+    
+    con.query(query, function (err, result) {
+        if (err) {
+            throw err;
+        }
+        console.log("search successful")
+        // res.send(query + result)
+        res.send(JSON.stringify(result));
+    })
+
+    console.log(query)
 })
 app.post("/customer/delete", function(req, res) {
 var query2 = "Delete FROM Customer WHERE "
